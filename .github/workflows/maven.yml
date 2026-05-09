@@ -1,6 +1,6 @@
 name: Java CI with Maven
 
-# 1. Kích hoạt workflow khi có sự kiện push hoặc pull_request
+# Kích hoạt workflow khi có sự kiện push hoặc pull_request
 on:
   push:
     branches: [ "main", "master" ]
@@ -9,13 +9,14 @@ on:
 
 jobs:
   build:
-    # 1. Thay đổi runs-on để nhận giá trị từ ma trận
-    runs-on: ${{ matrix.os }}
+    # 1. Thay đổi runs-on để nhận giá trị từ ma trận #Bài 4
+    #runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
-    # 2. Định nghĩa ma trận hệ điều hành
-    strategy:
-      matrix:
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
+    # 2. Định nghĩa ma trận hệ điều hành #Bài 4
+    #strategy:
+     # matrix:
+      #  os: [ ubuntu-latest, windows-latest, macos-latest ]
 
     steps:
       - name: Checkout repository
@@ -29,8 +30,8 @@ jobs:
           cache: maven #test caching bài 6
 
       - name: Build and Test with Maven
-        #run: mvn -B clean test package --file pom.xml(Bài 3)
-        run: mvn -B clean test verify --file pom.xml #Bài 5
+        run: mvn -B clean test package --file pom.xml #Bài 3
+        #run: mvn -B clean test verify --file pom.xml #Bài 5
 
       # Triển khai action upload-artifact cho JaCoCo Report
       - name: Upload JaCoCo Coverage Report

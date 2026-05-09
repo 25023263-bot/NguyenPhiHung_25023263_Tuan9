@@ -15,8 +15,8 @@ jobs:
 
     # 2. Định nghĩa ma trận hệ điều hành (Bài 4)
     #strategy:
-     # matrix:
-      #  os: [ ubuntu-latest, windows-latest, macos-latest ]
+      #matrix:
+        #os: [ ubuntu-latest, windows-latest, macos-latest ]
 
     steps:
       - name: Checkout repository
@@ -30,17 +30,17 @@ jobs:
           cache: maven #test caching bài 6
 
       - name: Build and Test with Maven
-        run: mvn -B clean test package --file pom.xml #Bài 3
-        #run: mvn -B clean test verify --file pom.xml #Bài 5
+        #run: mvn -B clean test package --file pom.xml #Bài 3
+        run: mvn -B clean test verify --file pom.xml #Bài 5
 
       # Triển khai action upload-artifact cho JaCoCo Report(Bài 5)
-      #- name: Upload JaCoCo Coverage Report
-       # uses: actions/upload-artifact@v4
+      - name: Upload JaCoCo Coverage Report
+        uses: actions/upload-artifact@v4
       # Cấu hình để nó luôn upload báo cáo kể cả khi build bị fail do chưa đạt 80%
-        #if: always()
-        #with:
-              #name: jacoco-report-${{ matrix.os }}
-              #path: target/site/jacoco/
+        if: always()
+        with:
+              name: jacoco-report-${{ matrix.os }}
+              path: target/site/jacoco/
 
       # Lưu giữ và xác minh tệp .jar được tạo ra
       - name: Upload JAR Artifact

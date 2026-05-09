@@ -1,8 +1,13 @@
 package Bai4;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class FileUtils {
-    // Cố tình dùng dấu gạch chéo ngược của Windows
+
+    // Đã refactor: Sử dụng Paths API để tự động tương thích mọi hệ điều hành
     public String getLogFilePath() {
-        return "logs\\app.log";
+        Path path = Paths.get("logs", "app.log");
+        return path.toString();
     }
 }

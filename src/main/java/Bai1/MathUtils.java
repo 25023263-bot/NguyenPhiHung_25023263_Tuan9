@@ -10,13 +10,13 @@ import org.slf4j.LoggerFactory;
 public class MathUtils {
 
     // Khởi tạo Logger cho class MathUtils
-    private static final Logger logger=LoggerFactory.getLogger(MathUtils.class);
+    private static final Logger logger = LoggerFactory.getLogger(MathUtils.class);
 
     /**
      * Thực hiện phép cộng hai số nguyên.
      */
     public int add(int a, int b) {
-        int result = a + b;
+        int result=a + b;
         // Thay thế System.out.println bằng structured logging
         logger.info("Thực hiện phép tính cộng: {} + {} = {}", a, b, result);
         return result;

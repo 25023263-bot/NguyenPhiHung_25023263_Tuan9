@@ -48,3 +48,13 @@ jobs:
         with:
           name: my-java-app-jar
           path: target/*.jar
+
+      # Tích hợp Action bình luận lỗi Checkstyle trực tiếp vào Pull Request(Bai 7)
+      - name: Run Checkstyle Reviewdog
+        uses: dbelyaev/action-checkstyle@master
+      # Đảm bảo nó luôn chạy dù các bước trước có fail
+        if: always() && github.event_name == 'pull_request'
+        with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                reporter: github-pr-review
+                level: error

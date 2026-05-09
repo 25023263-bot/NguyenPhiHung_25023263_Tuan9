@@ -9,14 +9,18 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # 1. Thay đổi runs-on để nhận giá trị từ ma trận
+    runs-on: ${{ matrix.os }}
+
+    # 2. Định nghĩa ma trận hệ điều hành
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
 
     steps:
-      # Bước 1: Lấy mã nguồn từ kho lưu trữ (repository)
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Bước 2: Cài đặt môi trường Java 17
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -24,11 +28,10 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      # 2. Thực thi vòng đời Maven: chạy test và package
       - name: Build and Test with Maven
         run: mvn -B clean test package --file pom.xml
 
-      # 3. Lưu giữ và xác minh tệp .jar được tạo ra
+      # Lưu giữ và xác minh tệp .jar được tạo ra
       - name: Upload JAR Artifact
         uses: actions/upload-artifact@v4
         with:

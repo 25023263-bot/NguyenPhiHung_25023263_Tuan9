@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 public class MathUtils {
 
     // Khởi tạo Logger cho class MathUtils
-    private static final Logger logger=LoggerFactory.getLogger(MathUtils.class);
+    private static final Logger logger = LoggerFactory.getLogger(MathUtils.class);
 
     /**
      * Thực hiện phép cộng hai số nguyên.

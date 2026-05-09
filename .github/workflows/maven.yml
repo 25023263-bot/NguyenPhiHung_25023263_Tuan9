@@ -30,8 +30,8 @@ jobs:
           cache: maven #test caching bài 6
 
       - name: Build and Test with Maven
-        run: mvn -B clean test package --file pom.xml #Bài 3
-        #run: mvn -B clean test verify --file pom.xml #Bài 5
+        #run: mvn -B clean test package --file pom.xml #Bài 3
+        run: mvn -B clean test verify --file pom.xml #Bài 5
 
       # Triển khai action upload-artifact cho JaCoCo Report(Bài 5)
       #- name: Upload JaCoCo Coverage Report

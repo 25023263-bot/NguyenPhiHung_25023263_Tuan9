@@ -21,7 +21,7 @@ public class MathUtilsTest {
     @Test
     @DisplayName("Kiểm tra phép cộng số dương")
     void testAdd() {
-        assertEquals(123, mathUtils.add(7, 3), "7 + 3 phải bằng 10");
+        assertEquals(10, mathUtils.add(7, 3), "7 + 3 phải bằng 10");
     }
 
     @Test

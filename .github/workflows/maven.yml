@@ -10,13 +10,13 @@ on:
 jobs:
   build:
     # 1. Thay đổi runs-on để nhận giá trị từ ma trận (Bài 4)
-    runs-on: ${{ matrix.os }}
-    #runs-on: ubuntu-latest
+    #runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     # 2. Định nghĩa ma trận hệ điều hành (Bài 4)
-    strategy:
-      matrix:
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
+    #strategy:
+      #matrix:
+        #os: [ ubuntu-latest, windows-latest, macos-latest ]
 
     steps:
       - name: Checkout repository
